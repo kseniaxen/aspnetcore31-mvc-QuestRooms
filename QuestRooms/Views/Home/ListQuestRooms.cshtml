@@ -1,0 +1,39 @@
+@model IEnumerable<QuestRooms.Models.QuestRoom>
+@{
+Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Quest Rooms</title>
+</head>
+<body>
+    <h2>List quest rooms</h2>
+    @foreach (QuestRooms.Models.QuestRoom q in Model)
+    {
+        <img src="~/img/@q.Logo" alt=""> 
+        <br>
+        <ul>
+            <li>Name: @q.Name</li>
+            <li>Description: @q.Description</li>
+            <li>Time: @q.Time</li>
+            <li>Minimum people: @q.MinimumPeople</li>
+            <li>Maximum people: @q.MaximumPeople</li>
+            <li>Minimum age people: @q.MinimumAgePeople</li>
+            <li>Address: @q.Address</li>
+            <li>Phone: @q.Phone</li>
+            <li>Email: @q.Email</li>
+            <li>Company: @q.Company</li>
+            <li>Rating: @q.Rating</li>
+            <li>Level fear: @q.LevelFear</li>
+            <li>Level complexity: @q.LevelСomplexity</li>
+        </ul>
+        <br>
+        @for(int i=0; i<@q.GalleryPhotos.Count; i++)
+        {
+            <img src="~/img/@q.GalleryPhotos[i]" alt="">
+        } 
+    }
+</body>
+</html>

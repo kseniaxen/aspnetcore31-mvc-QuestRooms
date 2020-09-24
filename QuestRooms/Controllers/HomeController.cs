@@ -1,37 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
 using QuestRooms.Models;
-
+using System.Collections.Generic;
 namespace QuestRooms.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
+        public ViewResult ListQuestRooms(){
+            List<string> listgallery = 
+                new List<string>(){
+                    "sherlok1.jpg",
+                    "sherlok2.jpg",
+                    "sherlok3.jpg"
+                    };
+            Repository.AddQuestRoom(new QuestRoom{
+                Name = "Шерлок",
+                Description = "Иногда чтобы распутать дело, даже великолепному Шерлоку необходимо заглянуть внутрь себя самого. Особенно, когда в самый неподходящий момент расследование перевернулось с ног на голову. У вас будет ровно час, чтобы разложить всё по полочкам в чертогах разума гениального сыщика Шерлока Холмса и раскрыть-таки злополучное дело!",
+                Time = "60 минут",
+                MinimumPeople = 3,
+                MaximumPeople = 6,
+                MinimumAgePeople = 14,
+                Address = "б-р Леси Украинки, 24",
+                Phone = "+38 098 641 94 34",
+                Email = "info@kadroom.com",
+                Company = "kadroom",
+                Rating = 4,
+                LevelFear = 2,
+                LevelСomplexity = 4,
+                Logo = "kadroom.png",
+                GalleryPhotos = listgallery
+            });
+            return View(Repository.ListQuestRooms);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
