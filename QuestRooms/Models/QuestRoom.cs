@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
-namespace QuestRooms.Models{
-    public class QuestRoom{
+using System.ComponentModel.DataAnnotations.Schema;
+namespace QuestRooms.Models
+{
+    public class QuestRoom
+    {
+        public long QuestRoomID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Time { get; set; }
@@ -16,6 +20,7 @@ namespace QuestRooms.Models{
         public int LevelFear { get; set; }
         public int LevelСomplexity { get; set; }
         public string Logo { get; set; }
-        public List<string> GalleryPhotos { get; set; }
+        public string GalleryPhotos { get; set; }
+        
     }
 }

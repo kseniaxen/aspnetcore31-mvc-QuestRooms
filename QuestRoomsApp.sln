@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestRooms", "QuestRooms\QuestRooms.csproj", "{35DC81DA-4E63-40E7-B499-D35F986CD24B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestRooms.Tests", "QuestRooms.Tests\QuestRooms.Tests.csproj", "{7B74F400-4852-4703-AC2F-8A87D93492FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{35DC81DA-4E63-40E7-B499-D35F986CD24B}.Release|x64.Build.0 = Release|Any CPU
 		{35DC81DA-4E63-40E7-B499-D35F986CD24B}.Release|x86.ActiveCfg = Release|Any CPU
 		{35DC81DA-4E63-40E7-B499-D35F986CD24B}.Release|x86.Build.0 = Release|Any CPU
+		{7B74F400-4852-4703-AC2F-8A87D93492FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B74F400-4852-4703-AC2F-8A87D93492FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B74F400-4852-4703-AC2F-8A87D93492FA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7B74F400-4852-4703-AC2F-8A87D93492FA}.Debug|x64.Build.0 = Debug|Any CPU
+		{7B74F400-4852-4703-AC2F-8A87D93492FA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7B74F400-4852-4703-AC2F-8A87D93492FA}.Debug|x86.Build.0 = Debug|Any CPU
+		{7B74F400-4852-4703-AC2F-8A87D93492FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B74F400-4852-4703-AC2F-8A87D93492FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B74F400-4852-4703-AC2F-8A87D93492FA}.Release|x64.ActiveCfg = Release|Any CPU
+		{7B74F400-4852-4703-AC2F-8A87D93492FA}.Release|x64.Build.0 = Release|Any CPU
+		{7B74F400-4852-4703-AC2F-8A87D93492FA}.Release|x86.ActiveCfg = Release|Any CPU
+		{7B74F400-4852-4703-AC2F-8A87D93492FA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

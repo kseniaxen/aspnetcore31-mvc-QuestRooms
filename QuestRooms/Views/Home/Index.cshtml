@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IQueryable<QuestRoom>
+@{
 Layout = null;
 }
 <!DOCTYPE html>
@@ -8,10 +9,32 @@ Layout = null;
     <title>Quest Rooms</title>
 </head>
 <body>
-    <div>
-        Check list QuestRooms
-    </div>
-<a asp-action="ListQuestRooms">Quest rooms</a>
-</div>
+    <h2>List quest rooms</h2>
+    @foreach (var q in Model)
+    {
+        <img src="~/img/@q.Logo" alt=""> 
+        <br>
+        <ul>
+            <li>Name: @q.Name</li>
+            <li>Description: @q.Description</li>
+            <li>Time: @q.Time</li>
+            <li>Minimum people: @q.MinimumPeople</li>
+            <li>Maximum people: @q.MaximumPeople</li>
+            <li>Minimum age people: @q.MinimumAgePeople</li>
+            <li>Address: @q.Address</li>
+            <li>Phone: @q.Phone</li>
+            <li>Email: @q.Email</li>
+            <li>Company: @q.Company</li>
+            <li>Rating: @q.Rating</li>
+            <li>Level fear: @q.LevelFear</li>
+            <li>Level complexity: @q.LevelСomplexity</li>
+        </ul>
+        <br>
+        string[] photos = q.GalleryPhotos.Split(' ');
+        @for(int i=0; i < photos.Length; i++)
+        {
+            <img src="~/img/@photos[i]" alt="">
+        } 
+    }
 </body>
 </html>
