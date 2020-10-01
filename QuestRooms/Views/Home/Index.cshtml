@@ -1,40 +1,26 @@
-﻿@model IQueryable<QuestRoom>
-@{
-Layout = null;
-}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width"/>
-    <title>Quest Rooms</title>
-</head>
-<body>
-    <h2>List quest rooms</h2>
-    @foreach (var q in Model)
+﻿@model RoomsListViewModel
+    @foreach (var q in Model.QuestRooms)
     {
+        <div class="card mb-3">
+            <img class="card-img-top img-fluid" src="~/img/@q.Logo" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@q.Name</h5>
+                <p class="card-text">@q.Description</p>
+                <p class="card-text"><small class="text-muted">Difficult: @q.LevelСomplexity</small></p>
+                <p class="card-text"><small class="text-muted">Group size: @q.MinimumPeople - @q.MaximumPeople</small></p>
+                <p class="card-text"><small class="text-muted">Time: @q.Time</small></p>
+                <p class="card-text"><small class="text-muted">Rating: @q.Rating/5</small></p>
+                <a href="@Url.Action("Room", "Home", new {questId = @q.QuestRoomID})" class="btn btn btn-outline-primary">READ MORE</a>
+            </div>
+        </div>
+        @* <h2>@q.Name</h2>
         <img src="~/img/@q.Logo" alt=""> 
-        <br>
-        <ul>
-            <li>Name: @q.Name</li>
-            <li>Description: @q.Description</li>
-            <li>Time: @q.Time</li>
-            <li>Minimum people: @q.MinimumPeople</li>
-            <li>Maximum people: @q.MaximumPeople</li>
-            <li>Minimum age people: @q.MinimumAgePeople</li>
-            <li>Address: @q.Address</li>
-            <li>Phone: @q.Phone</li>
-            <li>Email: @q.Email</li>
-            <li>Company: @q.Company</li>
-            <li>Rating: @q.Rating</li>
-            <li>Level fear: @q.LevelFear</li>
-            <li>Level complexity: @q.LevelСomplexity</li>
-        </ul>
-        <br>
-        string[] photos = q.GalleryPhotos.Split(' ');
-        @for(int i=0; i < photos.Length; i++)
-        {
-            <img src="~/img/@photos[i]" alt="">
-        } 
+        <h3>@q.Description</h3>
+        <p>Difficult: @q.LevelСomplexity</p>
+        <p>Group size: @q.MinimumPeople - @q.MaximumPeople</p>
+        <p>Time: @q.Time</p>
+        <p>Rating: @q.Rating/5</p>
+         <a href="@Url.Action("Room", "Home", new {questId = @q.QuestRoomID})" class="btn btn-outline-dark">READ MORE</a> *@
     }
-</body>
-</html>
+
+    <div page-model="@Model.PagingInfo" page-action="Index"></div>

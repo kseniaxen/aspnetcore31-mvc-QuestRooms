@@ -1,0 +1,24 @@
+@using QuestRooms.Models
+@model QuestRoom
+@{
+     string[] photos = @Model.GalleryPhotos.Split(' ');
+}
+    <p class="font-weight-bold">@Model.Name</p>
+    <img src="~/img/@Model.Logo" alt=""> 
+        <br>
+            <p class="text-muted">@Model.Description<p>
+            <p class="font-weight-bolder">Time: @Model.Time</p>
+            <p class="font-weight-bolder">Group size: @Model.MinimumPeople - @Model.MaximumPeople</p>
+            <p class="font-weight-normal">Minimum age people: @Model.MinimumAgePeople</p>
+            <p class="font-weight-normal">Address: @Model.Address</p>
+            <p class="font-weight-normal">Phone: @Model.Phone</p>
+            <p class="font-weight-normal">Email: @Model.Email</p>
+            <p class="font-weight-normal">Company: @Model.Company</p>
+            <p class="font-weight-bolder">Rating: @Model.Rating/5</p>
+            <p class="font-weight-bolder">Level fear: @Model.LevelFear/5</p>
+            <p class="font-weight-bolder">Level complexity: @Model.LevelСomplexity/5</p>
+        <br>
+        @for(int i=0; i < photos.Length; i++)
+        {
+            <img src="~/img/@photos[i]" alt="">
+        }

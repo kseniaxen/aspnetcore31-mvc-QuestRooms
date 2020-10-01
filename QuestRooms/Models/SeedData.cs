@@ -31,13 +31,13 @@ namespace QuestRooms.Models
                    Rating = 4,
                    LevelFear = 2,
                    LevelСomplexity = 4,
-                   Logo = "kadroom.png",
+                   Logo = "sherlock-logo.jpg",
                    GalleryPhotos = "sherlok1.jpg sherlok2.jpg sherlok3.jpg"
                },
                new QuestRoom
                {
-                   Name = "Name1",
-                   Description = "Description1",
+                   Name = "Diamond heist",
+                   Description = "Think you’ve got what it takes to be the world’s greatest thief?",
                    Time = "60 минут",
                    MinimumPeople = 3,
                    MaximumPeople = 6,
@@ -49,13 +49,13 @@ namespace QuestRooms.Models
                    Rating = 4,
                    LevelFear = 2,
                    LevelСomplexity = 4,
-                   Logo = "kadroom.png",
+                   Logo = "diamond.jpg",
                    GalleryPhotos = "sherlok1.jpg sherlok2.jpg sherlok3.jpg"
                },
                 new QuestRoom
                {
-                   Name = "Name2",
-                   Description = "Description2",
+                   Name = "DAVINCI’S WORKSHOP",
+                   Description = "Can you save the Mona Lisa from burglars?",
                    Time = "60 минут",
                    MinimumPeople = 3,
                    MaximumPeople = 6,
@@ -67,7 +67,43 @@ namespace QuestRooms.Models
                    Rating = 4,
                    LevelFear = 2,
                    LevelСomplexity = 4,
-                   Logo = "kadroom.png",
+                   Logo = "da vinchi.jpg",
+                   GalleryPhotos = "sherlok1.jpg sherlok2.jpg sherlok3.jpg"
+               },
+               new QuestRoom
+               {
+                   Name = "HOME ALONE",
+                   Description = "Ready to defend your home from the Wet Bandits?",
+                   Time = "60 минут",
+                   MinimumPeople = 2,
+                   MaximumPeople = 10,
+                   MinimumAgePeople = 14,
+                   Address = "б-р Леси Украинки, 24",
+                   Phone = "+38 098 641 94 34",
+                   Email = "info@kadroom.com",
+                   Company = "kadroom",
+                   Rating = 4,
+                   LevelFear = 2,
+                   LevelСomplexity = 4,
+                   Logo = "home_alone.jpg",
+                   GalleryPhotos = "sherlok1.jpg sherlok2.jpg sherlok3.jpg"
+               },
+                 new QuestRoom
+               {
+                   Name = "STADIUM SCARE",
+                   Description = "Can you disarm the bomb before it goes off during the game?",
+                   Time = "60 минут",
+                   MinimumPeople = 2,
+                   MaximumPeople = 12,
+                   MinimumAgePeople = 14,
+                   Address = "б-р Леси Украинки, 24",
+                   Phone = "+38 098 641 94 34",
+                   Email = "info@kadroom.com",
+                   Company = "kadroom",
+                   Rating = 5,
+                   LevelFear = 1,
+                   LevelСomplexity = 3,
+                   Logo = "stadium.jpg",
                    GalleryPhotos = "sherlok1.jpg sherlok2.jpg sherlok3.jpg"
                }
                 );
