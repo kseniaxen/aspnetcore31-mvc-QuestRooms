@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using QuestRooms.Models;
 
 namespace QuestRooms
@@ -32,6 +33,10 @@ namespace QuestRooms
             services.AddScoped<IRoomsRepository, EFRoomsRepository>();
             services.AddServerSideBlazor();
             services.AddRazorPages();
+            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(
+                Configuration["ConnectionStrings:IdentityConnection"]));
+            services.AddIdentity<IdentityUser, IdentityRole>()
+            .AddEntityFrameworkStores<AppIdentityDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +47,9 @@ namespace QuestRooms
             app.UseStaticFiles();
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("pagination", "Rooms/Page{roomPage::regex(^[1-9]\\d*$)=1}",
@@ -51,9 +59,10 @@ namespace QuestRooms
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
                 endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/admin/{*catchall}","/Admin/Index");
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
             });
             SeedData.EnsurePopulated(app);
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
