@@ -1,26 +1,7 @@
 ﻿@model RoomsListViewModel
     @foreach (var q in Model.QuestRooms)
     {
-        <div class="card mb-3">
-            <img class="card-img-top img-fluid" src="~/img/@q.Logo" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">@q.Name</h5>
-                <p class="card-text">@q.Description</p>
-                <p class="card-text"><small class="text-muted">Difficult: @q.LevelСomplexity</small></p>
-                <p class="card-text"><small class="text-muted">Group size: @q.MinimumPeople - @q.MaximumPeople</small></p>
-                <p class="card-text"><small class="text-muted">Time: @q.Time</small></p>
-                <p class="card-text"><small class="text-muted">Rating: @q.Rating/5</small></p>
-                <a href="@Url.Action("Room", "Home", new {questId = @q.QuestRoomID})" class="btn btn btn-outline-primary">READ MORE</a>
-            </div>
-        </div>
-        @* <h2>@q.Name</h2>
-        <img src="~/img/@q.Logo" alt=""> 
-        <h3>@q.Description</h3>
-        <p>Difficult: @q.LevelСomplexity</p>
-        <p>Group size: @q.MinimumPeople - @q.MaximumPeople</p>
-        <p>Time: @q.Time</p>
-        <p>Rating: @q.Rating/5</p>
-         <a href="@Url.Action("Room", "Home", new {questId = @q.QuestRoomID})" class="btn btn-outline-dark">READ MORE</a> *@
+       <partial name="RoomSummary" model="q" />
     }
 
     <div page-model="@Model.PagingInfo" page-action="Index"></div>

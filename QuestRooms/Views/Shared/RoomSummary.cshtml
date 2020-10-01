@@ -1,0 +1,14 @@
+@using QuestRooms.Models
+@model QuestRoom
+ <div class="card mb-3">
+            <img class="card-img-top img-fluid" src="~/img/@Model.Logo" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text">@Model.Description</p>
+                <p class="card-text"><small class="text-muted">Difficult: @Model.LevelСomplexity</small></p>
+                <p class="card-text"><small class="text-muted">Group size: @Model.MinimumPeople - @Model.MaximumPeople</small></p>
+                <p class="card-text"><small class="text-muted">Time: @Model.Time</small></p>
+                <p class="card-text"><small class="text-muted">Rating: @Model.Rating/5</small></p>
+                <a href="@Url.Action("Room", "Home", new {questId = @Model.QuestRoomID})" class="btn btn btn-outline-primary">READ MORE</a>
+            </div>
+        </div>
