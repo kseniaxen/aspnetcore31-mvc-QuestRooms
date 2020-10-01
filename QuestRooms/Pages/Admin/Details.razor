@@ -1,0 +1,36 @@
+@page "/admin/rooms/details/{id:long}"
+    <h3 class="bg-info text-white text-center p-1">Details</h3>
+        <table class="table table-sm table-bordered table-striped">
+            <tbody>
+                <tr><th>ID</th><td>@questRoom.QuestRoomID</td></tr>
+                <tr><th>Name</th><td>@questRoom.Name</td></tr>
+                <tr><th>Description</th><td>@questRoom.Description</td></tr>
+                <tr><th>Time</th><td>@questRoom.Time</td></tr>
+                <tr><th>MinimumPeople</th><td>@questRoom.MinimumPeople</td></tr>
+                <tr><th>MaximumPeople</th><td>@questRoom.MaximumPeople</td></tr>
+                <tr><th>MinimumAgePeople</th><td>@questRoom.MinimumAgePeople</td></tr>
+                <tr><th>Address</th><td>@questRoom.Address</td></tr>
+                <tr><th>Phone</th><td>@questRoom.Phone</td></tr>
+                <tr><th>Email</th><td>@questRoom.Email</td></tr>
+                <tr><th>Company</th><td>@questRoom.Company</td></tr>
+                <tr><th>Rating</th><td>@questRoom.Rating</td></tr>
+                <tr><th>LevelFear</th><td>@questRoom.LevelFear</td></tr>
+                <tr><th>LevelСomplexity</th><td>@questRoom.LevelСomplexity</td></tr>
+                <tr><th>Logo path</th><td>@questRoom.Logo</td></tr>
+                <tr><th>Gallery photos path</th><td>@questRoom.GalleryPhotos</td></tr>
+            </tbody>
+        </table>
+<NavLink class="btn btn-warning" href="@EditUrl">Edit</NavLink>
+<NavLink class="btn btn-secondary" href="/admin/rooms">Back</NavLink>
+@code {
+    [Inject]
+    public IRoomsRepository Repository { get; set; }
+    [Parameter]
+    public long Id { get; set; }
+    public QuestRoom questRoom { get; set; }
+    protected override void OnParametersSet() {
+        questRoom = Repository.QuestRooms.FirstOrDefault(p => p.QuestRoomID == Id);
+    }
+    public string EditUrl => $"/admin/rooms/edit/{questRoom.QuestRoomID}";
+    public string[] photos => questRoom.GalleryPhotos.Split(' ');
+}

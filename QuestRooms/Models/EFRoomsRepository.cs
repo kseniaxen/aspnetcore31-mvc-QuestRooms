@@ -9,5 +9,20 @@ namespace QuestRooms.Models
             context = ctx;
         }
         public IQueryable<QuestRoom> QuestRooms => context.QuestRooms;
+
+        public void CreateQuestRoom(QuestRoom p)
+        {
+            context.Add(p);
+            context.SaveChanges();
+        }
+        public void DeleteQuestRoom(QuestRoom p)
+        {
+            context.Remove(p);
+            context.SaveChanges();
+        }
+        public void SaveQuestRoom(QuestRoom p)
+        {
+            context.SaveChanges();
+        }
     }
 }

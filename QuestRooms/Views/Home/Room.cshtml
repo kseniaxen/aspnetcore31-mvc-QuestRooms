@@ -3,8 +3,14 @@
 @{
      string[] photos = @Model.GalleryPhotos.Split(' ');
 }
+<style>
+.img-detail{
+    max-width: 500px;
+}
+</style>
+
     <p class="font-weight-bold">@Model.Name</p>
-    <img src="~/img/@Model.Logo" alt=""> 
+    <img src="~/img/@Model.Logo" class="img-detail" alt=""> 
         <br>
             <p class="text-muted">@Model.Description<p>
             <p class="font-weight-bolder">Time: @Model.Time</p>
@@ -22,5 +28,5 @@
         <br>
         @for(int i=0; i < photos.Length; i++)
         {
-            <img src="~/img/@photos[i]" alt="">
+            <img src="~/img/@photos[i]" class="img-photos" alt="">
         }

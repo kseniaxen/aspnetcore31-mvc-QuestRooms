@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using QuestRooms.Models;
 
@@ -31,6 +30,8 @@ namespace QuestRooms
                 Configuration["ConnectionStrings:QuestRoomsConnection"]);
             });
             services.AddScoped<IRoomsRepository, EFRoomsRepository>();
+            services.AddServerSideBlazor();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +49,9 @@ namespace QuestRooms
                 endpoints.MapControllerRoute("roominfo", "Room{QuestID}",
                         new { Controller = "Home", action = "Room" });
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/admin/{*catchall}","/Admin/Index");
             });
             SeedData.EnsurePopulated(app);
         }

@@ -1,0 +1,118 @@
+@page "/admin/rooms/edit/{id:long}"
+@page "/admin/rooms/create"
+@inherits OwningComponentBase<IRoomsRepository>
+    <style>
+        div.validation-message { color: rgb(220, 53, 69); font-weight: 500 }
+    </style>
+    <h3 class="bg-@ThemeColor text-white text-center p-1">@TitleText a Product</h3>
+    <EditForm Model="questRoom" OnValidSubmit="SaveRoom">
+        <DataAnnotationsValidator />
+            @if(questRoom.QuestRoomID != 0) {
+                <div class="form-group">
+                    <label>ID</label>
+                    <input class="form-control" disabled value="@questRoom.QuestRoomID"/>
+                </div>
+            }
+            <div class="form-group">
+                <label>Name</label>
+                <ValidationMessage For="@(() => questRoom.Name)" />
+                <InputText class="form-control" @bind-Value="questRoom.Name" />
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <ValidationMessage For="@(() => questRoom.Description)" />
+                <InputText class="form-control" @bind-Value="questRoom.Time" />
+            </div>
+             <div class="form-group">
+                <label>Time</label>
+                <ValidationMessage For="@(() => questRoom.Time)" />
+                <InputText class="form-control" @bind-Value="questRoom.Time" />
+            </div>
+            <div class="form-group">
+                <label>MinimumPeople</label>
+                <ValidationMessage For="@(() => questRoom.MinimumPeople)" />
+                <InputNumber class="form-control" @bind-Value="questRoom.MinimumPeople" />
+            </div>
+            <div class="form-group">
+                <label>MaximumPeople</label>
+                <ValidationMessage For="@(() => questRoom.MaximumPeople)" />
+                <InputNumber class="form-control" @bind-Value="questRoom.MaximumPeople" />
+            </div>
+             <div class="form-group">
+                <label>MinimumAgePeople</label>
+                <ValidationMessage For="@(() => questRoom.MinimumAgePeople)" />
+                <InputNumber class="form-control" @bind-Value="questRoom.MinimumAgePeople" />
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <ValidationMessage For="@(() => questRoom.Address)" />
+                <InputText class="form-control" @bind-Value="questRoom.Address" />
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <ValidationMessage For="@(() => questRoom.Phone)" />
+                <InputText class="form-control" @bind-Value="questRoom.Phone" />
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <ValidationMessage For="@(() => questRoom.Email)" />
+                <InputText class="form-control" @bind-Value="questRoom.Email" />
+            </div>
+            <div class="form-group">
+                <label>Company</label>
+                <ValidationMessage For="@(() => questRoom.Company)" />
+                <InputText class="form-control" @bind-Value="questRoom.Company" />
+            </div>
+             <div class="form-group">
+                <label>Rating</label>
+                <ValidationMessage For="@(() => questRoom.Rating)" />
+                <InputNumber class="form-control" @bind-Value="questRoom.Rating" />
+            </div>
+             <div class="form-group">
+                <label>LevelFear</label>
+                <ValidationMessage For="@(() => questRoom.LevelFear)" />
+                <InputNumber class="form-control" @bind-Value="questRoom.LevelFear" />
+            </div>
+             <div class="form-group">
+                <label>LevelСomplexity</label>
+                <ValidationMessage For="@(() => questRoom.LevelСomplexity)" />
+                <InputNumber class="form-control" @bind-Value="questRoom.LevelСomplexity" />
+            </div>
+            <div class="form-group">
+                <label>Logo path</label>
+                <ValidationMessage For="@(() => questRoom.Logo)" />
+                <InputText class="form-control" @bind-Value="questRoom.Logo" />
+            </div>
+             <div class="form-group">
+                <label>Gallery photos path</label>
+                <ValidationMessage For="@(() => questRoom.GalleryPhotos)" />
+                <InputText class="form-control" @bind-Value="questRoom.GalleryPhotos" />
+            </div>
+            <button type="submit" class="btn btn-@ThemeColor">Save</button>
+                <NavLink class="btn btn-secondary" href="/admin/rooms">Cancel</NavLink>
+    </EditForm>
+
+
+@code {
+    public IRoomsRepository Repository => Service;
+    [Inject]
+    public NavigationManager NavManager { get; set; }
+    [Parameter]
+    public long Id { get; set; } = 0;
+    public QuestRoom questRoom { get; set; } = new QuestRoom();
+    protected override void OnParametersSet() {
+        if (Id != 0) {
+            questRoom = Repository.QuestRooms.FirstOrDefault(p => p.QuestRoomID == Id);
+        }
+    }
+    public void SaveRoom() {
+        if (Id == 0) {
+            Repository.CreateQuestRoom(questRoom);
+        } else {
+            Repository.SaveQuestRoom(questRoom);
+        }
+        NavManager.NavigateTo("/admin/rooms");
+    }
+    public string ThemeColor => Id == 0 ? "primary" : "warning";
+    public string TitleText => Id == 0 ? "Create" : "Edit";
+}
