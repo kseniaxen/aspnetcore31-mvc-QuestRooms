@@ -42,6 +42,15 @@ namespace QuestRooms
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            if (env.IsProduction())
+            {
+                app.UseExceptionHandler("/error");
+            }
+            else
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseStatusCodePages();
+            }
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
